@@ -2,17 +2,31 @@
     "name": "mongoose-diff-versioner",
     "version": "1.0.0",
     "description": "Mongoose plugin that versions entities using jsonDiffPatch",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "test": "jest --config jest.config.json",
         "build": "tsc",
         "format": "prettier --write \"src/**/*.ts\"",
-        "lint": "tslint -p tsconfig.json"
+        "lint": "tslint -p tsconfig.json",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test && npm run lint",
+        "preversion": "npm run lint",
+        "version": "npm run format && git add -A src",
+        "postversion": "git push && git push --tags"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/RaulRivadeneyra/mongoose-diff-versioner.git"
     },
+    "keywords": [
+        "mongoose",
+        "plugin",
+        "versioning",
+        "history",
+        "diff",
+        "jsonDiffPatch"
+    ],
     "bugs": {
         "url": "https://github.com/RaulRivadeneyra/mongoose-diff-versioner/issues"
     },
